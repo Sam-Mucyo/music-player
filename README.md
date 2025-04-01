@@ -26,6 +26,24 @@ Run the build script to compile the project:
 
 This will create a `build` directory with the compiled binaries in `build/bin`.
 
+## Testing
+
+The project includes a comprehensive test suite using Google Test. To run the tests:
+
+```
+./run_tests.sh
+```
+
+This will build the project, compile the tests, and run them. The test results will be displayed in the terminal.
+
+### Continuous Integration
+
+This project uses GitHub Actions for continuous integration. When pushing to the main branch or creating a pull request, the CI pipeline automatically:
+
+1. Builds the project
+2. Runs all tests
+3. Generates and deploys the documentation to GitHub Pages
+
 ## Running
 
 ### Server
@@ -159,6 +177,14 @@ music_player/
 │       ├── music_library.h
 │       ├── wav_file.cpp
 │       └── wav_file.h
+├── tests/
+│   ├── unit/                 # Unit tests
+│   │   ├── protocol_test.cpp
+│   │   ├── socket_test.cpp
+│   │   ├── music_library_test.cpp
+│   │   └── wav_file_test.cpp
+│   ├── integration/          # Integration tests
+│   └── test_data/            # Test data files
 ├── music/
 │   └── (WAV files go here)
 ├── .github/
@@ -166,5 +192,6 @@ music_player/
 ├── .gitignore               # Excludes generated files
 ├── CMakeLists.txt
 ├── Doxyfile                 # Doxygen configuration
-└── build.sh
+├── build.sh                 # Build script
+└── run_tests.sh             # Test script
 ```
