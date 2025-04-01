@@ -87,6 +87,48 @@ Once connected, the client will retrieve the list of available songs from the se
 - `Protocol`: Message formats for client-server communication
 - `WavHeader`: WAV file format header structure
 
+## Documentation
+
+This project uses Doxygen with the Doxygen Awesome CSS theme to generate API documentation.
+
+### Setting Up Documentation
+
+1. Install Doxygen and Graphviz:
+   ```bash
+   # macOS
+   brew install doxygen graphviz
+   
+   # Ubuntu/Debian
+   sudo apt-get install doxygen graphviz
+   ```
+
+2. Generate the documentation:
+   ```bash
+   doxygen Doxyfile
+   ```
+
+3. Open the generated documentation:
+   ```bash
+   open docs/html/index.html
+   ```
+
+### Documentation Workflow for Team Members
+
+1. **Document your code** using Doxygen-style comments. Example:
+   ```cpp
+   /**
+    * @brief Brief description of the function
+    * @param paramName Description of the parameter
+    * @return Description of the return value
+    */
+   ```
+
+2. **Generate documentation locally** to preview changes before committing.
+
+3. **Do not commit generated files** - the `docs/html/` and `docs/latex/` directories are excluded in `.gitignore`.
+
+4. **CI/CD will automatically generate and publish** documentation to GitHub Pages when changes are pushed to the main branch.
+
 ## Project Structure
 
 ```
@@ -103,6 +145,9 @@ music_player/
 │       ├── protocol.h
 │       ├── socket.h
 │       └── wav_header.h
+├── docs/
+│   ├── doxygen-awesome-css/  # Doxygen theme files
+│   └── header.html           # Custom Doxygen header
 ├── server/
 │   └── src/
 │       ├── main.cpp
@@ -116,6 +161,10 @@ music_player/
 │       └── wav_file.h
 ├── music/
 │   └── (WAV files go here)
+├── .github/
+│   └── workflows/            # CI/CD configuration
+├── .gitignore               # Excludes generated files
 ├── CMakeLists.txt
+├── Doxyfile                 # Doxygen configuration
 └── build.sh
 ```
