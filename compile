@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Compile the code
+echo "Compiling..."
+clang++ -std=c++14 -Wall -O2 -o wav_player wav_player.cpp -framework CoreAudio -framework AudioToolbox -framework AudioUnit
